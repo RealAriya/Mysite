@@ -13,3 +13,5 @@ def about_view(request):
 def contact_view(request):
     return HttpResponse('<h1>Contact page</h1>')
 
+def first_site(request):
+    return render(request,'form.html')

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html lang="en">
+       <head>
+            <title>Fill the form...</title>
+       </head>
+       <body>
+            <h3>Login</h3>
+            <div>
+                <form action="/submit" method="post">
+                    <lable for="name">Name:</lable>
+                    <input type="text" id="name" name="name" required>
+
+                    <lable for="email">Email</lable>
+                    <input type="text" id="'email" name="email" required>
+
+                    <br/>
+                    <lable for="message">Message:</lable>
+                    <br/>
+                    <textarea id="message" name="message" rows="4" cols="50"></textarea>   
+                
+
+                 <fieldset>
+                       <legend>Prefered Contact Method</legend>
+
+                       <input type="radio" id="contact_email" name="contact_method" value="email" checked>
+                       <lable for="contact_email">Email</lable>
+
+                       <input type="radio" id="contact_phone" name="contact_method" value="phone" checked>
+                       <lable for="contact_phone">Phone</lable>
+
+                 </fieldset>
+
+                   <button type="submit">Submit</button>
+                </form>
+            </div>
+       </body>
+</html>
