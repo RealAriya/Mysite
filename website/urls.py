@@ -6,5 +6,7 @@ urlpatterns = [
     path('', index_view),
     path('about', about_view),
     path('contact', contact_view),
-    path('forms',first_site)
+    path('forms',first_site),
+    path('mp4', mp4_site)
 ]
+

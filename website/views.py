@@ -15,3 +15,6 @@ def contact_view(request):
 
 def first_site(request):
     return render(request,'form.html')
+
+def mp4_site(request):
+    return render(request,'websites/img,mp3,mp4.html')
