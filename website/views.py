@@ -3,8 +3,13 @@ from django.shortcuts import render
 from django.http import HttpResponse,JsonResponse
 
 
-def http_test(request):
-    return HttpResponse('hello')
+def index_view(request):
+    return HttpResponse('<h1>Home page</h1>')
 
-def json_test(request):
-    return JsonResponse({'name': 'Arya', 'family-name':'Tahmasebi'})
+
+def about_view(request):
+    return HttpResponse('<h1>About page</h1>')
+
+def contact_view(request):
+    return HttpResponse('<h1>Contact page</h1>')
+
