@@ -26,7 +26,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('website.urls', namespace='website')),
-    path('',include('blog.urls', namespace='blog'))    # we can remove 'website/' to have a real site
+    path('blog/',include('blog.urls', namespace='blog'))    # we can remove 'website/' to have a real site
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
