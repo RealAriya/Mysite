@@ -8,4 +8,7 @@ class postAdmin(admin.ModelAdmin):
     empty_value_display = "-empty-"
     list_display = ['title','counted_view','status','published_date','created_date']
     list_filter = ('status','counted_view')
+    ordering = ["created_date"]  # we can put mines behind the name to get reverse output ["-created_date"]
+
+    
 # admin.site.register(post,postAdmin)
