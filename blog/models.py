@@ -14,3 +14,7 @@ class post(models.Model):
     published_date = models.DateTimeField(null=True)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
+
+
+    def __str__(self):          # To see id numbers at the same time 
+        return self.title       # return " {} - {} ".format(self.title,self.id)
