@@ -17,6 +17,7 @@ class post(models.Model):
 
     class Meta():
         ordering = ["created_date"]
+        verbose_name = "pizza"
 
 
     def __str__(self):          # To see id numbers at the same time 
