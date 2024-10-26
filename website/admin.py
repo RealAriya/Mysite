@@ -1,3 +1,10 @@
 from django.contrib import admin
+from website.models import Contact
 
+@admin.register(Contact)
+
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ['subject','name','email','created_date','updated_date']
+    list_filter = ('subject',)
 # Register your models here.
+# admin.site.register(Contact,ContactAdmin)
