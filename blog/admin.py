@@ -4,6 +4,7 @@ from .models import post
 @admin.register(post)
 
 class postAdmin(admin.ModelAdmin):
-    pass
+    date_hierarchy = 'created_date'
+    empty_value_display = "-empty-"
 
 # admin.site.register(post,postAdmin)
