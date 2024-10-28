@@ -6,11 +6,16 @@
     <title>Fetch</title>
 </head>
 <body>
-    {{posts}}
+    <!-- {{posts}} -->
+    
     {% for i in posts %}
-    <h3>{{i}}</h3>
-    <p>{{i.content}}</p>
-    <small>{{i.created_date}}</small>
+        {% if i.status == 0 %}
+            <p>This post is not published yet.</p>
+        {% else %}
+            <h3>{{i}}</h3>
+            <p>{{i.content}}</p>
+            <small>{{i.created_date}}</small>
+        {% endif %}
     {% endfor %}
 </body>
 </html>
