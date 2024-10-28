@@ -8,7 +8,9 @@
 <body>
     {{posts}}
     {% for i in posts %}
-    <h4>{{i}}</h4>
+    <h3>{{i}}</h3>
+    <p>{{i.content}}</p>
+    <small>{{i.created_date}}</small>
     {% endfor %}
 </body>
 </html>

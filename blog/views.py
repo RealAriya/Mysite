@@ -12,6 +12,7 @@ def blog_single(request):
 
 def test(request):
     posts = post.objects.all()
+    # posts = post.objects.filter(status = 1)
     context = {'posts': posts}
     return render(request,'test.html',context)
 
