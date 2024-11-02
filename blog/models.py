@@ -3,12 +3,20 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+
+class Category(models.Model):
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+    
+
 class post(models.Model):
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)  # (User, on_delete=models.CASCADE)
     image = models.ImageField(upload_to = 'blog/', default = 'blog/default.jpg')
     title = models.CharField(max_length=255)
     content = models.TextField()
-    # category = models.IntegerField()
+    category = models.ManyToManyField(Category)
     # tag
     counted_view = models.IntegerField(default=0)
     status = models.BooleanField(default=False)
@@ -29,4 +37,4 @@ class post(models.Model):
             self.counted_view += other
             self.save()
         return self
-    
+
