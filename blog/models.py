@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 class post(models.Model):
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)  # (User, on_delete=models.CASCADE)
-    # image
+    image = models.ImageField(upload_to = 'blog/', default = 'blog/default.jpg')
     title = models.CharField(max_length=255)
     content = models.TextField()
     # category = models.IntegerField()
