@@ -21,4 +21,11 @@ class post(models.Model):
 
 
     def __str__(self):          # To see id numbers at the same time 
-        return self.title       # return " {} - {} ".format(self.title,self.id)
+        return self.title  # return " {} - {} ".format(self.title,self.id)
+    
+    def __add__(self, other):
+        if isinstance(other, int):
+            self.counted_view += other
+            self.save()
+        return self
+    
