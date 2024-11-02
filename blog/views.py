@@ -14,7 +14,8 @@ def blog_home(request):
 
 
 def blog_single(request,pid):
-    posts = get_object_or_404(post, id=pid)
+    postss = post.objects.filter(status = 1)
+    posts = get_object_or_404(postss, id=pid)
 
     posts + 1
     
