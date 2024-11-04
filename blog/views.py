@@ -17,9 +17,21 @@ def blog_single(request,pid):
     postss = post.objects.filter(status = 1)
     posts = get_object_or_404(postss, id=pid)
 
+    all_posts = list(postss)
+
+    current_index = all_posts.index(posts)
+
+    pre_post = all_posts[current_index - 1] if current_index > 0 else None
+    next_post = all_posts[current_index + 1] if current_index < len(all_posts) - 1 else None
+
     posts + 1
     
-    context = {'posts': posts}
+    context = {
+        'posts': posts,
+        'pre_post': pre_post,
+        'next_post': next_post
+               }
+    
     return render(request,'blog/blog-single.html',context)
 
 
