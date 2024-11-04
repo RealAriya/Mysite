@@ -37,4 +37,6 @@ class post(models.Model):
             self.counted_view += other
             self.save()
         return self
-
+    
+    def snippest(self):
+        return self.content[:100] + '...'
