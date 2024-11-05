@@ -14,7 +14,8 @@ def blog_home(request):
 
 
 def blog_single(request,pid):
-    postss = post.objects.filter(status = 1)
+    now = timezone.now()
+    postss = post.objects.filter(status = 1 , published_date__lte=now)
     posts = get_object_or_404(postss, id=pid)
 
     all_posts = list(postss)
