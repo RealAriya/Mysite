@@ -43,13 +43,13 @@ def blog_single(request,pid):
 
 ########################################################### test
 
-# def test(request,pid):
-#     # posts = post.objects.all()
+def test(request):
+    # posts = post.objects.all()
 #     posts = post.objects.filter(pk=pid)
 #     # posts = post.objects.get(id=pid)
 #     # posts = get_object_or_404(post,pk=pid)  #posts = get_object_or_404(name of class , name=pid)
 #     if not posts.exists():
 #         raise Http404("Post not found")
-#     context = {'posts': posts}
-#     return render(request,'test.html',context)
+    # context = {'posts': posts}
+    return render(request,'test.html')
 

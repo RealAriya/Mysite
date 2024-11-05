@@ -1,3 +1,5 @@
+{% load blog_tags %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,12 +9,11 @@
 </head>
 <body>
     
-    {% for post in posts %}
-        <h1>{{ post.title }}</h1>
-        <p>{{ post.content }}</p>
-        <samll>{{ post.counted_view }}</samll>
+    <p>Number of posts: {% totalposts %}</p>
+    <h4>{{tp}}</h4>
+    {% for j in totalposts %}
+        <p>{{ j.content|lower }}</p>
     {% endfor %}
-    
 
     <!-- {% for i in posts %}
         {% if i.status == 0 %}
