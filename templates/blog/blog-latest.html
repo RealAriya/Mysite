@@ -1,0 +1,18 @@
+{% load static %}
+
+<div class="single-sidebar-widget popular-post-widget">
+									<h4 class="popular-title">latest Posts</h4>
+									<div class="popular-post-list">
+										{% for j in postss %}
+										<div class="single-post-list d-flex flex-row align-items-center">
+										   
+											<div class="thumb">
+												<img class="img-fluid" src="{{ j.image.url }}"  style="width: 120px; height: 70px;" alt="">
+											</div>
+											<div class="details">
+												<a href="{% url 'blog:single' pid=j.id %}"><h6>{{j.title}}</h6></a>
+												<p>{{ j.published_date|date:"d M Y"}}</p>
+											</div>							
+										</div>	
+										{% endfor %}						
+								</div>
