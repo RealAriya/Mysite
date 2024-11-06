@@ -93,7 +93,7 @@
 									<ul class="tags">
 
 										{% for cat in j.category.all %}
-										<li><a href="#">{{cat.name}}</a>{% if not forloop.last %},{% endif %}</li>
+										<li><a href="{% url 'blog:category' cat_name=cat.name %}">{{cat.name}}</a>{% if not forloop.last %},{% endif %}</li>
 										{% endfor %}
 										<!-- {{ j.category.all|join:", "}} -->
 										

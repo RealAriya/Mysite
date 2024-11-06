@@ -37,6 +37,12 @@ def blog_single(request,pid):
 
 
 
+def blog_category(request,cat_name):
+    now = timezone.now()
+    posts = post.objects.filter(status = 1, published_date__lte=now)
+    posts = posts.filter(category__name=cat_name)
+    context = {'posts': posts}
+    return render(request,'blog/blog-home.html',context)
 
 
 
