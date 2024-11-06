@@ -14,3 +14,8 @@ def sum():
 @stringfilter
 def lower(value):
     return value.lower()
+
+@register.inclusion_tag('popularposts.html')
+def popularposts():
+    posts = post.objects.filter(status=1).order_by('published_date')[:2]
+    return {'posts':posts}

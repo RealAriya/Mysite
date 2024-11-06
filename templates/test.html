@@ -9,21 +9,11 @@
 </head>
 <body>
     
-    <p>Number of posts: {% totalposts %}</p>
+    <p>Number of posts: {% totalposts as tp %}</p>
     <h4>{{tp}}</h4>
-    {% for j in totalposts %}
-        <p>{{ j.content|lower }}</p>
-    {% endfor %}
+    
+    {% popularposts %}
 
-    <!-- {% for i in posts %}
-        {% if i.status == 0 %}
-            <p>This post is not published yet.</p>
-        {% else %}
-            <h3>{{i}}</h3>
-            <p>{{i.content}}</p>
-            <small>{{i.created_date}}</small>
-        {% endif %}
-    {% endfor %} -->
 </body>
 </html>
 
