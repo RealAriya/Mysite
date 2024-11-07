@@ -40,6 +40,16 @@ def blog_single(request,pid):
     return render(request,'blog/blog-single.html',context)
 
 
+def blog_search(request):
+    now = timezone.now()
+    posts = post.objects.filter(status = 1 , published_date__lte=now)
+    if request.method == 'GET':
+        if s:= request.GET.get('s'):
+            posts = posts.filter(content__contains=s)
+    context = {'posts': posts}
+    return render(request,'blog/blog-home.html',context)
+
+
 
 # def blog_category(request,cat_name):
 #     now = timezone.now()
