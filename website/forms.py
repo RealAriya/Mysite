@@ -1,4 +1,5 @@
 from django import forms
+from website.models import Contact
 
 
 class NameForm(forms.Form):
@@ -8,4 +9,8 @@ class NameForm(forms.Form):
     subject = forms.CharField(label="subject", max_length=100)
     message = forms.CharField(label="message", widget=forms.Textarea)
 
-    
+
+class Contact_Form(forms.ModelForm):
+    class Meta:
+        model = Contact
+        fields = '__all__'
