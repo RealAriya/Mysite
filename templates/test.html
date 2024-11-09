@@ -5,14 +5,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fetch</title>
+    <title>post</title>
 </head>
 <body>
-    
-    <p>Number of posts: {% totalposts as tp %}</p>
-    <h4>{{tp}}</h4>
-    
-    {% popularposts %}
+
+    <form action="{% url 'website:test' %}" method="post">
+        {% csrf_token %}
+       
+        {{form.as_p}}
+        <button type="submit">submit</button>
+    </form>
 
 </body>
 </html>
