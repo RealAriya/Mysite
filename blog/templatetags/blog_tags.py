@@ -1,4 +1,5 @@
 from django import template
+from django.utils import timezone
 from blog.models import post, Category
 from django.template.defaultfilters import stringfilter
 register = template.Library()
@@ -30,3 +31,13 @@ def postcategories():
         cat_dict[name]=postss.filter(category=name).count()
 
     return {'categories':cat_dict}
+
+
+
+@register.inclusion_tag('website/latest-post.html')
+def website_latest():
+    now = timezone.now()
+    postss = post.objects.filter(status=1, published_date__lte=now)[:6]
+    categories = Category.objects.all()
+    
+    return {'postss':postss, 'categories':categories}
