@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'django.contrib.sites',
     'django.contrib.sitemaps',
+    'robots',
     'django.contrib.staticfiles',
     'website.apps.WebsiteConfig',
     'blog'
