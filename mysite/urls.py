@@ -6,6 +6,7 @@ from django.contrib.sitemaps.views import sitemap
 from website.sitemaps import StaticViewSitemap
 from blog.sitemaps import BlogSitemap
 from debug_toolbar.toolbar import debug_toolbar_urls
+
 # from website.views import http_test,json_test    #To currect directory we use .views or directory-name(mysite).views
 # change directory in your app (website)
 
