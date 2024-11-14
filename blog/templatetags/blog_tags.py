@@ -1,6 +1,6 @@
 from django import template
 from django.utils import timezone
-from blog.models import post, Category
+from blog.models import post, Category,Comment
 from django.template.defaultfilters import stringfilter
 register = template.Library()
 
@@ -41,3 +41,7 @@ def website_latest():
     categories = Category.objects.all()
     
     return {'postss':postss, 'categories':categories}
+
+@register.simple_tag(name='comments_count')
+def function(pid):
+    return Comment.objects.filter(post=pid,approved=True).count()
