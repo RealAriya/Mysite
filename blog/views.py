@@ -3,6 +3,8 @@ from django.http import Http404
 from blog.models import post,Comment
 from django.utils import timezone
 from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
+from blog.forms import Comment_Form
+from django.contrib import messages
 
 
 
@@ -30,6 +32,14 @@ def blog_home(request,**kwargs):
 
 def blog_single(request,pid):
     now = timezone.now()
+    if request.method=='POST':
+        form = Comment_Form(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.add_message(request, messages.SUCCESS, "Your comment submited successfully.")
+        else:
+            messages.add_message(request, messages.ERROR, "Your comment didn't send.")
+    
     postss = post.objects.filter(status = 1 , published_date__lte=now)
     posts = get_object_or_404(postss, id=pid)
     comments = Comment.objects.filter(post=posts.id,approved=1).order_by('created_date')
@@ -41,14 +51,18 @@ def blog_single(request,pid):
     next_post = all_posts[current_index + 1] if current_index < len(all_posts) - 1 else None
 
     posts + 1
-    
+        
+    form = Comment_Form()
+
     context = {
         'posts': posts,
         'pre_post': pre_post,
         'next_post': next_post,
         'comments': comments,
-               }
-    
+        'form': form
+        }
+        
+        
     return render(request,'blog/blog-single.html',context)
 
 
