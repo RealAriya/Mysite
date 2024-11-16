@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'taggit',
     'captcha',
     'website.apps.WebsiteConfig',
-    'blog'
+    'blog',
+    'accounts',
 ]
 
 SITE_ID = 2

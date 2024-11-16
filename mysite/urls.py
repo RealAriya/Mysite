@@ -22,7 +22,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('website.urls', namespace='website')),
     path('blog/',include('blog.urls', namespace='blog')),    # we can remove 'website/' to have a real site
-
+    path('accounts/',include('accounts.urls' , namespace='accounts')),
+    
     path(
         "sitemap.xml",
         sitemap,
