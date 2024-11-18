@@ -1,11 +1,11 @@
 from django.shortcuts import render,get_object_or_404
-from django.http import Http404
+from django.http import Http404,HttpResponseRedirect
 from blog.models import post,Comment
 from django.utils import timezone
 from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
 from blog.forms import Comment_Form
 from django.contrib import messages
-
+from django.urls import reverse
 
 
 def blog_home(request,**kwargs):
@@ -42,28 +42,32 @@ def blog_single(request,pid):
     
     postss = post.objects.filter(status = 1 , published_date__lte=now)
     posts = get_object_or_404(postss, id=pid)
-    comments = Comment.objects.filter(post=posts.id,approved=1).order_by('created_date')
-    all_posts = list(postss)
+    if not post.login_required:
+        comments = Comment.objects.filter(post=posts.id,approved=1).order_by('created_date')
+        all_posts = list(postss)
 
-    current_index = all_posts.index(posts)
+        current_index = all_posts.index(posts)
 
-    pre_post = all_posts[current_index - 1] if current_index > 0 else None
-    next_post = all_posts[current_index + 1] if current_index < len(all_posts) - 1 else None
+        pre_post = all_posts[current_index - 1] if current_index > 0 else None
+        next_post = all_posts[current_index + 1] if current_index < len(all_posts) - 1 else None
 
-    posts + 1
-        
-    form = Comment_Form()
+        posts + 1
+            
+        form = Comment_Form()
 
-    context = {
-        'posts': posts,
-        'pre_post': pre_post,
-        'next_post': next_post,
-        'comments': comments,
-        'form': form
-        }
-        
-        
-    return render(request,'blog/blog-single.html',context)
+        context = {
+            'posts': posts,
+            'pre_post': pre_post,
+            'next_post': next_post,
+            'comments': comments,
+            'form': form
+            }
+               
+        return render(request,'blog/blog-single.html',context)
+    
+    else:
+        return HttpResponseRedirect(reverse('accounts:login'))
+    
 
 
 def blog_search(request):
