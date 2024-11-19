@@ -11,4 +11,6 @@ urlpatterns = [
     path('logout',views.logout_view,name='logout'),
     # signup
     path('signup',views.signup_view,name='signup'),
+    # Forget password
+    path('Forget_password',views.forget_view, name='forget'),
 ]
