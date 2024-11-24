@@ -1,6 +1,7 @@
 from django.urls import path
 from accounts.views import * 
 from . import views
+from django.urls import path
 
 app_name = 'accounts' 
 
@@ -12,5 +13,4 @@ urlpatterns = [
     # signup
     path('signup',views.signup_view,name='signup'),
     # Forget password
-    path('Forget_password',views.forget_view, name='forget'),
 ]

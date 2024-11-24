@@ -23,6 +23,7 @@ urlpatterns = [
     path('',include('website.urls', namespace='website')),
     path('blog/',include('blog.urls', namespace='blog')),    # we can remove 'website/' to have a real site
     path('accounts/',include('accounts.urls' , namespace='accounts')),
+    path('password-reset/', include('password_reset.urls' , namespace='password_reset')),
     
     path(
         "sitemap.xml",
