@@ -7,39 +7,6 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.contrib.auth.models import User
 
-# def login_view(request):
-#     if not request.user.is_authenticated:
-#         if request.method == 'POST':
-#             username = request.POST.get("username")
-#             email = request.POST.get("email")
-#             password = request.POST.get("password")
-#             user = None
-        
-#             if username:
-#                 user = authenticate(request, username=username, password=password)
-                
-#             if user is None and email:
-#                 users = User.objects.filter(email=email)
-#                 if users.exists():
-#                     user = authenticate(request, username=users.first().username, password=password)
-
-#             if user is not None:
-#                 login(request, user)
-#                 messages.add_message(request, messages.SUCCESS, "You are logged in successfully.")
-#                 return redirect('/')
-#             else:
-#                 messages.add_message(request, messages.ERROR, "Invalid credentials.")
-#         else:
-            
-#             form = AuthenticationForm()
-        
-#         context = {'form': form}
-#         return render(request, 'accounts/login.html', context)
-#     else:
-#         messages.add_message(request, messages.INFO, "You are already logged in.")
-#         return redirect('/')
-
-
 
 def login_view(request):
     if not request.user.is_authenticated:
@@ -52,8 +19,10 @@ def login_view(request):
             if '@' in username_or_email:
                 # If it's an email
                 try:
-                    user = authenticate(request, username=User.objects.get(email=username_or_email).username, password=password)
+                    user = User.objects.get(email=username_or_email)
+                    user = authenticate(request, username=user.username, password=password)
                 except User.DoesNotExist:
+                    messages.add_message(request, messages.ERROR, "No account found with that email.")
                     user = None
             else:
                 # If it's a username
@@ -64,14 +33,21 @@ def login_view(request):
                 messages.add_message(request, messages.SUCCESS, "You logged in successfully.")
                 return redirect('/')
             else:
-                messages.add_message(request, messages.ERROR, "Invalid credentials.")
+                # Check if the username exists for a specific message
+                if '@' in username_or_email:
+                    messages.add_message(request, messages.ERROR, "The password you entered is incorrect.")
+                else:
+                    if User.objects.filter(username=username_or_email).exists():
+                        messages.add_message(request, messages.ERROR, "The password you entered is incorrect.")
+                    else:
+                        messages.add_message(request, messages.ERROR, "No account found with that username.")
+
         
-        # Render the login form (optional to show the form again)
-        form = AuthenticationForm()  # Still good to keep this for rendering
+        form = AuthenticationForm()  
         context = {
             'form': form
         }
-        return render(request, 'accounts/login.html', context)
+        return render(request, 'registration/login.html', context)
     else:
         messages.add_message(request, messages.INFO, "You are already logged in.")
         return redirect('/')

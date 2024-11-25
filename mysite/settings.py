@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     'website.apps.WebsiteConfig',
     'blog',
     'accounts',
-    'password_reset',
 ]
 
 SITE_ID = 2
