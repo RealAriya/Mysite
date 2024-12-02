@@ -5,7 +5,9 @@ from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
 from website.sitemaps import StaticViewSitemap
 from blog.sitemaps import BlogSitemap
-from debug_toolbar.toolbar import debug_toolbar_urls
+# from debug_toolbar.toolbar import debug_toolbar_urls
+from django.conf.urls import handler404, handler403, handler400, handler500
+from . import error_views
 
 # from website.views import http_test,json_test    #To currect directory we use .views or directory-name(mysite).views
 # change directory in your app (website)
@@ -41,3 +43,10 @@ urlpatterns = [
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+# Set custom error handlers
+handler404 = error_views.handler404
+handler403 = error_views.handler403
+handler400 = error_views.handler400
+handler500 = error_views.handler500
