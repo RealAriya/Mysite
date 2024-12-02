@@ -13,3 +13,5 @@ pillow==11.0.0
 sqlparse==0.5.1
 tzdata==2024.2
 webencodings==0.5.1
+python-decouple==3.8
+psycopg2==2.9.10
