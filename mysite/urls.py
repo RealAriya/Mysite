@@ -37,7 +37,7 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')),
     path('captcha/', include('captcha.urls')),
     
-] + debug_toolbar_urls()
+]
 
 
 if settings.DEBUG:
