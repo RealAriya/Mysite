@@ -1,0 +1,23 @@
+{
+    "platform": "django",
+    "django": {
+        "pythonversion": "3.12.3",
+        "collectstatic": true,
+        "compileMessages": false,
+        "modifysettings": true,
+        "timezone":"Asia/Tehran"
+        
+       },
+
+       "app": "technovista",
+       "disks": [
+        {
+            "name": "static",
+            "mountTO": "static"
+        },
+        {
+            "name": "media",
+            "mountTO": "media"
+        }
+       ]
+}
