@@ -4,6 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
 from website.sitemaps import StaticViewSitemap
+from debug_toolbar.toolbar import debug_toolbar_urls
 from blog.sitemaps import BlogSitemap
 # from debug_toolbar.toolbar import debug_toolbar_urls
 from django.conf.urls import handler404, handler403, handler400, handler500
@@ -37,7 +38,7 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')),
     path('captcha/', include('captcha.urls')),
     
-]
+] + debug_toolbar_urls()
 
 
 if settings.DEBUG:

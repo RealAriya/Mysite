@@ -26,7 +26,8 @@ SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DEBUG",cast=bool,default=True)
 
-ALLOWED_HOSTS = ['technovista.liara.run', 'www.technovista.liara.run', 'localhost', '127.0.0.1']
+# 'technovista.liara.run', 'www.technovista.liara.run', 
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -45,7 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'django_summernote',
     'robots',
-    # 'debug_toolbar',
+    'debug_toolbar',
     'taggit',
     'captcha',
     'website.apps.WebsiteConfig',
