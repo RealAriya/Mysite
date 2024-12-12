@@ -52,7 +52,25 @@ INSTALLED_APPS = [
     'website.apps.WebsiteConfig',
     'blog',
     'accounts',
+    'compressor',
 ]
+
+# django-compressor setup
+
+STATICFILES_FINDERS = [ 'django.contrib.staticfiles.finders.FileSystemFinder',
+                        'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+                        'compressor.finders.CompressorFinder',
+ ] 
+
+COMPRESS_ENABLED = True
+
+COMPRESS_CSS_FILTERS = [ 'compressor.filters.css_default.CssAbsoluteFilter',
+                        'compressor.filters.cssmin.CSSMinFilter',
+ ]
+
+COMPRESS_JS_FILTERS = [ 'compressor.filters.jsmin.JSMinFilter', ]
+
+
 
 SITE_ID = 2
 
@@ -71,7 +89,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
-    'mysite.middleware.ComingSoonMiddleware',
+    # 'mysite.middleware.ComingSoonMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'

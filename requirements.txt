@@ -1,6 +1,8 @@
 asgiref==3.8.1
 bleach==6.2.0
 Django==4.2.16
+django-appconf==1.0.6
+django-compressor==4.5.1
 django-debug-toolbar==4.4.6
 django-extensions==3.2.3
 django-multi-captcha-admin==2.0.0
@@ -10,8 +12,11 @@ django-simple-captcha==0.6.0
 django-summernote==0.8.20.0
 django-taggit==6.1.0
 pillow==11.0.0
+psycopg2==2.9.10
+psycopg2-binary==2.9.10
+python-decouple==3.8
+rcssmin==1.1.2
+rjsmin==1.2.2
 sqlparse==0.5.1
 tzdata==2024.2
 webencodings==0.5.1
-python-decouple==3.8
-psycopg2==2.9.10
