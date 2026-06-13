@@ -43,7 +43,6 @@ Mysite/
 | Backend | Python, Django |
 | Frontend | HTML, CSS, SCSS, JavaScript (pre-built) |
 | Database | SQLite (development) |
-| Deployment config | Liara cloud platform, Nginx |
 | Version control | Git, GitHub |
 
 
